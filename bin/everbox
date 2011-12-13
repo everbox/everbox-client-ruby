@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "everbox_client/cli"
+
+EverboxClient::CLI.execute(STDOUT, STDIN, STDERR, ARGV)
