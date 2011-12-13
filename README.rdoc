@@ -2,7 +2,7 @@
 
 == 安装
 
-    $ gem install everbox_client-0.0.8.gem
+    $ gem install everbox_client
 
 == 使用方法
 
