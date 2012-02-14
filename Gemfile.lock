@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    everbox_client (0.0.9)
+    everbox_client (0.0.10)
       highline
       json_pure
       launchy
