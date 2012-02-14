@@ -1,9 +1,9 @@
+require 'rdoc/task'
 require 'rubygems'
 gem 'bundler'
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
-require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "everbox_client #{EverboxClient::VERSION}"
