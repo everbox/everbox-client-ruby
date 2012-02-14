@@ -31,8 +31,5 @@
     $ everbox help login
     Usage:
 
-      everbox login [username [password]]
+      everbox login
       登录 everbox, 登录完成后的 token 保存在 $HOME/.everbox_client/config
-
-      everbox login --oauth
-      以 OAuth 方式登录

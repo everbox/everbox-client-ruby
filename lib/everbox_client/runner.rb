@@ -90,11 +90,8 @@ DOC
         puts <<DOC
 Usage:
 
-  everbox login [username [password]]
+  everbox login
   登录 everbox, 登录完成后的 token 保存在 $HOME/.everbox_client/config
-
-  everbox login --oauth
-  以 OAuth 方式登录
 DOC
       when 'ls'
         puts <<DOC
@@ -159,38 +156,8 @@ DOC
     end
 
 
-    def login(*args)
-      if args[0] == '-o' or args[0] == '--oauth'
-        return login_oauth
-      end
-
-      @username = args.shift
-      @password = args.shift
-
-      raise "too many arguments" unless args.empty?
-
-      if @username.nil?
-        @username = ask("Enter your username:  ") { |q| q.echo = true }
-      end
-      if @password.nil?
-        @password = ask("Enter your password:  ") { |q| q.echo = "*" }
-      end
-
-      response = consumer.request(:post, "/oauth/quick_token?login=#{CGI.escape @username}&password=#{CGI.escape @password}")
-      if response.code.to_i != 200
-        raise "login failed: #{response.body}"
-      end
-
-      d = CGI.parse(response.body).inject({}) do |h,(k,v)|
-        h[k.strip.to_sym] = v.first
-        h[k.strip]        = v.first
-        h
-      end
-
-      access_token = OAuth::AccessToken.from_hash(self, d)
-      @options[:access_token] = access_token.token
-      @options[:access_secret] = access_token.secret
-      puts @options.inspect
+    def login
+      login_oauth
     end
 
     def ls(path = '.')
