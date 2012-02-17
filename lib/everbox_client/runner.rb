@@ -52,7 +52,7 @@ module EverboxClient
     def initialize(opts={})
       opts ||= {}
       config_file = opts[:config_file] || DEFAULT_OPTIONS[:config_file]
-      @options = DEFAULT_OPTIONS.merge(load_config(config_file)).merge(opts)
+      @options = DEFAULT_OPTIONS.merge(options_from_env).merge(load_config(config_file)).merge(opts)
     end
 
     def help(arg = nil)
@@ -515,6 +515,12 @@ DOC
       puts "  total: #{data["total"]}"
     end
   protected
+
+    def options_from_env
+      res = {}
+      res[:proxy] ||= ENV['http_proxy']
+      res
+    end
 
     def fs(path)
       path = path.to_s

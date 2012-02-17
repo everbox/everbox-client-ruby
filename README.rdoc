@@ -33,3 +33,7 @@
 
       everbox login
       登录 everbox, 登录完成后的 token 保存在 $HOME/.everbox_client/config
+
+=== 环境变量
+
+    http_proxy: 用于设置代理，比如 export http_proxy="http://192.168.2.1:3128"
