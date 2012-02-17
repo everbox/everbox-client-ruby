@@ -16,14 +16,8 @@ module EverboxClient
       it { should_not be_file }
       it { should be_dir }
       it { should_not be_deleted }
-      describe :basename do
-        subject { @path_entry.basename }
-        it { should == "foo" }
-      end
-      describe :to_line do
-        subject { @path_entry.to_line }
-        it { should == "   1932891\tfoo/\n" }
-      end
+      its(:basename) { should == "foo" }
+      its(:to_line) { should == "   1932891\tfoo/\n" }
     end
 
     context "file" do
@@ -35,14 +29,8 @@ module EverboxClient
       it { should be_file }
       it { should_not be_dir }
       it { should_not be_deleted }
-      describe :basename do
-        subject { @path_entry.basename }
-        it { should == "foo" }
-      end
-      describe :to_line do
-        subject { @path_entry.to_line }
-        it { should == "   1932891\tfoo\n" }
-      end
+      its(:basename) { should == "foo" }
+      its(:to_line) { should == "   1932891\tfoo\n" }
     end
   end
 end
