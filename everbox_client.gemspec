@@ -13,11 +13,10 @@ Gem::Specification.new do |s|
   s.description = %q{EverBox Command Tool}
 
 
-  s.files         = Dir.glob("{bin,lib,spec}/**/*") + %w(README.rdoc CHANGELOG.rdoc)
+  s.files         = Dir.glob("{bin,lib,spec}/**/*") + %w(README.md NEWS.md)
   s.test_files    = Dir.glob("spec/**/*")
   s.executables   = ["everbox"]
   s.require_paths = ["lib"]
-  s.extra_rdoc_files = %w(README.rdoc CHANGELOG.rdoc)
   s.add_dependency "oauth"
   s.add_dependency "highline"
   s.add_dependency "json_pure"
