@@ -45,8 +45,8 @@ module EverboxClient
       :consumer_secret => '9tego848novn68kboENkhW3gTy9rE2woHWpRwAwQ',
       :oauth_site => 'http://account.everbox.com',
       :fs_site => 'http://fs.everbox.com',
-      :chunk_size => 1024*1024*4
-
+      :chunk_size => 1024*1024*4,
+      :proxy => nil
     }
 
     def initialize(opts={})
@@ -544,7 +544,8 @@ DOC
 
     def consumer
       OAuth::Consumer.new @options[:consumer_key], @options[:consumer_secret], {
-        :site => @options[:oauth_site]
+        :site => @options[:oauth_site],
+        :proxy => @options[:proxy]
       }
     end
 
