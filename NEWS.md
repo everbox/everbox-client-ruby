@@ -1,3 +1,7 @@
+## 0.0.12 (2012-03-29)
+
+* BUG: not honor http_proxy env when put file. https://github.com/everbox/everbox-client-ruby/issues/3
+
 ## 0.0.11 (2012-02-16)
 
 * honor http_proxy env.
