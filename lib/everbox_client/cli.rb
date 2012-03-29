@@ -1,5 +1,7 @@
 require 'pp'
 
+require 'restclient'
+
 require 'everbox_client/runner'
 
 module EverboxClient
@@ -45,6 +47,7 @@ module EverboxClient
       @stdin  = stdin
       @stderr = stderr
       extract_command_and_parse_options(arguments)
+      parse_env
 
       if valid_command?
         begin
@@ -60,23 +63,20 @@ module EverboxClient
         usage
       end
     end
-  protected
 
+    protected
+    def parse_env
+      RestClient.proxy = ENV['http_proxy'] if ENV['http_proxy']
+    end
 
     def extract_command_and_parse_options(arguments)
       parse_options(arguments)
       @command, *@args = ARGV
     end
+
     def option_parser(arguments = "")
       option_parser = OptionParser.new do |opts|
         opts.banner = "Usage: #{File.basename($0)} [options] <command>"
-
-        ## Common Options
-
-
-        #opts.on("--scope SCOPE", "Specifies the scope (Google-specific).") do |v|
-        #  options[:scope] = v
-        #end
       end
     end
 
@@ -88,7 +88,7 @@ module EverboxClient
       escaped_pairs = options[:params].collect do |pair|
         if pair =~ /:/
           Hash[*pair.split(":", 2)].collect do |k,v|
-            [CGI.escape(k.strip), CGI.escape(v.strip)] * "="
+          [CGI.escape(k.strip), CGI.escape(v.strip)] * "="
           end
         else
           pair
