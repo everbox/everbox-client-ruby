@@ -1,5 +1,7 @@
 # everbox_client - EverBox 命令行及调试工具
 
+[![Build Status](https://secure.travis-ci.org/everbox/everbox-client-ruby.png?branch=master)](http://travis-ci.org/everbox/everbox-client-ruby)
+
 ## 安装
 
     $ gem install everbox_client
