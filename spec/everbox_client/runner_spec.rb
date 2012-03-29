@@ -4,7 +4,7 @@ require 'everbox_client/runner'
 
 module EverboxClient
   describe Runner do
-    it "should works" do
+    pending "should works" do
       Runner.new.ls
     end
 
